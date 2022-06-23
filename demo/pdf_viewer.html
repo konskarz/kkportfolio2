@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>pdfViewer</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.6.347/es5/web/pdf_viewer.css">
+</head>
+<body>
+	<div id="pdf_viewer" class="vh-100 d-flex flex-column">
+		<div class="navbar navbar-expand navbar-light bg-light">
+			<span class="navbar-text user-select-none px-2 text-truncate mr-auto" data-pv-main="title"></span>
+			<div class="navbar-nav d-none d-md-flex">
+				<button type="button" class="btn btn-link border-0 nav-link" aria-label="Previous page" disabled data-pv-main="previous">
+					<i class="bi bi-arrow-up" aria-hidden="true"></i>
+				</button>
+				<span class="navbar-text user-select-none px-2" data-pv-main="page">1</span>
+				<span class="navbar-text user-select-none">/</span>
+				<span class="navbar-text user-select-none px-2" data-pv-main="pages"></span>
+				<button type="button" class="btn btn-link border-0 nav-link" aria-label="Next page" data-pv-main="next">
+					<i class="bi bi-arrow-down" aria-hidden="true"></i>
+				</button>
+			</div>
+			<div class="navbar-nav d-none d-sm-flex">
+				<button type="button" class="btn btn-link border-0 nav-link" aria-label="Zoom Out" data-pv-main="zoomOut">
+					<i class="bi bi-dash" aria-hidden="true"></i>
+				</button>
+				<span class="navbar-text user-select-none px-2" data-pv-main="scale"></span>
+				<button type="button" class="btn btn-link border-0 nav-link" aria-label="Zoom In" data-pv-main="zoomIn">
+					<i class="bi bi-plus" aria-hidden="true"></i>
+				</button>
+				<button type="button" class="btn btn-link border-0 nav-link" aria-label="Fit to width" data-pv-main="fitWidth">
+					<i class="bi bi-arrow-left-right" aria-hidden="true"></i>
+				</button>
+				<button type="button" class="btn btn-link border-0 nav-link" aria-label="Fit to height" data-pv-main="fitHeight">
+					<i class="bi bi-arrow-down-up" aria-hidden="true"></i>
+				</button>
+			</div>
+			<div class="navbar-nav">
+				<button type="button" class="btn btn-link border-0 nav-link" aria-label="Print" data-pv-main="print" hidden>
+					<i class="bi bi-printer" aria-hidden="true"></i>
+				</button>
+				<button type="button" class="btn btn-link border-0 nav-link" aria-label="Download" data-pv-main="download">
+					<i class="bi bi-download" aria-hidden="true"></i>
+				</button>
+			</div>
+			<div class="viewer-progress position-absolute bg-dark" style="height:1px;bottom:0;left:0;" data-pv-main="progress"></div>
+		</div>
+		<div class="viewer-main flex-grow-1 position-relative">
+			<div class="position-absolute w-100 h-100 overflow-auto" data-pv-main="main"><div class="pdfViewer"></div></div>
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.6.347/es5/build/pdf.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.6.347/es5/web/pdf_viewer.js"></script>
+	<script src="/projects/kkportfolio2/pdf_viewer.js"></script>
+	<script>
+		(function(pdfViewer, hash) {
+			pdfViewer.open({
+				'viewer': 'pdfViewer',
+				'element': '#pdf_viewer',
+				'href': hash ? hash.substring(1) : 'compressed.tracemonkey-pldi-09.pdf'
+			});
+		})(new window.PDFViewer(), window.location.hash);
+	</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>fileBrowser</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/themes/prism.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.6.347/es5/web/pdf_viewer.css">
+	<style>pre {tab-size: 2;}</style>
+</head>
+<body>
+	<div id="file_browser" class="vh-100 d-flex flex-column">
+		<div class="flex-shrink-0 navbar navbar-expand navbar-light bg-light">
+			<div class="navbar-nav overflow-auto mr-auto" data-fb-main="crumbs"></div>
+			<div class="navbar-nav" data-fb-main="prevnext"></div>
+		</div>
+		<div class="flex-grow-1 row no-gutters flex-nowrap overflow-hidden">
+			<div class="d-none d-lg-block col-3 overflow-auto">
+				<div class="nav nav-pills flex-column py-2" data-fb-main="tree"></div>
+			</div>
+			<div class="col overflow-auto" data-fb-main="content"></div>
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/prism.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/components/prism-markup-templating.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/components/prism-java.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/components/prism-nsis.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/components/prism-php.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.6.347/es5/build/pdf.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.6.347/es5/web/pdf_viewer.js"></script>
+	<script src="/projects/kkportfolio2/pdf_viewer.js"></script>
+	<script src="/projects/kkportfolio2/file_browser.js"></script>
+	<script>
+		(function(fileBrowser, hash) {
+			fileBrowser.open({
+				'viewer': 'fileBrowser',
+				'element': '#file_browser',
+				'path': hash ? hash.substring(1) : '/projects/kkportfolio2/'
+			});
+		})(new window.FileBrowser({
+			'dirUrl': '/script.php?action=dir&path=',
+			'zipUrl': '/script.php?action=zip&path='
+		}), window.location.hash);
+	</script>
+</body>
+</html>

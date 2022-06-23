@@ -1,0 +1,53 @@
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css');
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css');
+@media screen {
+	.dialog-open {
+		overflow: hidden;
+	}
+	.dialog-open #dialog {
+		top: 0;
+	}
+	.navbar {
+		padding-left: .5rem;
+		padding-right: .5rem;
+	}
+	.media-link {
+		position: relative;
+		min-width: 45rem;
+	}
+	.media-anchor {
+		position: absolute;
+		top: -4rem;
+	}
+	pre {
+		tab-size: 2;
+	}
+}
+@media print {
+	a:not(.btn) {
+		text-decoration: none !important;
+	}
+	@page {
+		size: auto;
+	}
+	body,
+	.container {
+		min-width: initial !important;
+		max-width: initial !important;
+	}
+	.section {
+		page-break-after: always;
+	}
+	.media-link {
+		page-break-inside: avoid;
+	}
+}
+@media print and (orientation:landscape) {
+	.aside {
+		flex-basis: 58.333333%;
+	}
+	.article {
+		flex-basis: 0;
+		flex-grow: 1;
+	}
+}

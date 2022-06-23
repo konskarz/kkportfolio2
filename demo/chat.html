@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Chat</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
+	<link rel="manifest" id="manifest-placeholder">
+</head>
+<body>
+	<div id="chat" class="modal d-flex flex-column bg-light"></div>
+	<script src="/projects/kkportfolio2/chat.js"></script>
+	<script>
+		new window.Chat({
+			'element': '#chat'
+		}).notify = function(title) {
+			if(window.location.host !== 'konskar.free.fr') return console.log(title);
+			this.postform('https://wirepusher.com/send', {
+				'id': 'dK8smpp3Y',
+				'title': title,
+				'message': new Date().toString()
+			});
+		};
+	</script>
+</body>
+</html>
