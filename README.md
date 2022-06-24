@@ -1,5 +1,5 @@
 # kkPortfolio
-Musician portfolio site
+2020, Musician portfolio site
 
 Using vanilla JavaScript with separation of logic and presentation and browsing history support
 ## Modules
