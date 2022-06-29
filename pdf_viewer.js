@@ -7,15 +7,21 @@
 	
 	// ToDo: better way to initialize pdf.worker.js and /cmaps/
 	var pdfjsFilePath = document.querySelector('script[src*="/pdf."]').src,
+		isMobile = (function() {
+			return (navigator.platform !== undefined && navigator.platform === 'MacIntel'
+				&& navigator.maxTouchPoints !== undefined && navigator.maxTouchPoints > 1)
+				|| /Mobi|Tablet|Android|iPad|iPhone/.test(navigator.userAgent);
+		})(),
+		isFirefox = (function() {
+			return /irefox/.test(navigator.userAgent);
+		})(),
 		canPdf = (function() {
 			function getAXO(name) {
 				try { return new window.ActiveXObject(name); } catch(e) { return null; }
 			}
+			if(isMobile) return false;
 			if(navigator.mimeTypes['application/pdf'] !== undefined) return true;
-			if((navigator.platform !== undefined && navigator.platform === 'MacIntel'
-				&& navigator.maxTouchPoints !== undefined && navigator.maxTouchPoints > 1)
-				|| /Mobi|Tablet|Android|iPad|iPhone/.test(navigator.userAgent)) return false;
-			if(/irefox/.test(navigator.userAgent)) {
+			if(isFirefox) {
 				var uas = navigator.userAgent.split('rv:');
 				return uas.length > 1 && parseInt(uas[1].split('.')[0], 10) > 18;
 			}

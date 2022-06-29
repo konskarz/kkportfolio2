@@ -134,8 +134,8 @@
 			function getAXO(name) {
 				try { return new window.ActiveXObject(name); } catch(e) { return null; }
 			}
-			if(navigator.mimeTypes['application/pdf'] !== undefined) return true;
 			if(isMobile) return false;
+			if(navigator.mimeTypes['application/pdf'] !== undefined) return true;
 			if(isFirefox) {
 				var uas = navigator.userAgent.split('rv:');
 				return uas.length > 1 && parseInt(uas[1].split('.')[0], 10) > 18;
