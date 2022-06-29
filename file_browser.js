@@ -5,14 +5,10 @@
 }(this, function() {
 	'use strict';
 	
-	var isMobile = (function() {
-			return (navigator.platform !== undefined && navigator.platform === 'MacIntel'
-				&& navigator.maxTouchPoints !== undefined && navigator.maxTouchPoints > 1)
-				|| /Mobi|Tablet|Android|iPad|iPhone/.test(navigator.userAgent);
-		})(),
-		isFirefox = (function() {
-			return /irefox/.test(navigator.userAgent);
-		})(),
+	var isMobile = /Mobi|Tablet|Android|iPad|iPhone/.test(navigator.userAgent) ||
+			(navigator.platform !== undefined && navigator.platform === 'MacIntel'
+				&& navigator.maxTouchPoints !== undefined && navigator.maxTouchPoints > 1),
+		isFirefox = /irefox/.test(navigator.userAgent),
 		highlighter = (function() {
 			// https://bugs.chromium.org/p/chromium/issues/detail?id=1297594
 			if(isMobile && !isFirefox) return null;

@@ -7,14 +7,10 @@
 	
 	// ToDo: better way to initialize pdf.worker.js and /cmaps/
 	var pdfjsFilePath = document.querySelector('script[src*="/pdf."]').src,
-		isMobile = (function() {
-			return (navigator.platform !== undefined && navigator.platform === 'MacIntel'
-				&& navigator.maxTouchPoints !== undefined && navigator.maxTouchPoints > 1)
-				|| /Mobi|Tablet|Android|iPad|iPhone/.test(navigator.userAgent);
-		})(),
-		isFirefox = (function() {
-			return /irefox/.test(navigator.userAgent);
-		})(),
+		isMobile = /Mobi|Tablet|Android|iPad|iPhone/.test(navigator.userAgent) ||
+			(navigator.platform !== undefined && navigator.platform === 'MacIntel'
+				&& navigator.maxTouchPoints !== undefined && navigator.maxTouchPoints > 1),
+		isFirefox = /irefox/.test(navigator.userAgent),
 		canPdf = (function() {
 			function getAXO(name) {
 				try { return new window.ActiveXObject(name); } catch(e) { return null; }
