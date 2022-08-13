@@ -20,7 +20,7 @@
 	}
 	function load(urls, callback) {
 		var loaded = 0, required = urls.length,
-			head = document.querySelector('head'), ex, el;
+			head = document.querySelector('head'), el;
 		function onload() {
 			loaded++;
 			if(loaded === required && typeof callback === 'function') callback();
@@ -184,7 +184,7 @@
 	
 	load([{'js':'https://www.googletagmanager.com/gtag/js?id=G-XXMS0PGHEG'}], function() {
 		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
+		function gtag(){window.dataLayer.push(arguments);}
 		gtag('js', new Date());
 		gtag('config', 'G-XXMS0PGHEG');
 	});
